@@ -10,11 +10,11 @@ Course Project
 
 - Setting WD
 
-´´´
+```
 
 setwd("/Users/JD/Documents/Data Science Johns Hopkins/Getting and Cleaning Data/Project/UCI HAR Dataset/")
 
-´´´
+```
 
 #########################################################################################
 #########################################################################################
