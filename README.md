@@ -11,9 +11,7 @@ Course Project
 - Setting WD
 
 ```
-
 setwd("/Users/JD/Documents/Data Science Johns Hopkins/Getting and Cleaning Data/Project/UCI HAR Dataset/")
-
 ```
 
 ## 1. Merges the training and the test sets to create one data set.
