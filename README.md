@@ -16,9 +16,9 @@ setwd("/Users/JD/Documents/Data Science Johns Hopkins/Getting and Cleaning Data/
 
 ```
 
-### Merges the training and the test sets to create one data set.
+## Merges the training and the test sets to create one data set.
 
-- ####Reading features
+- Reading features
 
 ```
 features<-read.table("features.txt")
@@ -39,12 +39,15 @@ names(y_train)<- "activity"     # naming activity the columns
 ```
 
 - binding the "train" files  
-``
+
+```
 train<-cbind(subject_train,y_train,x_train)  #Binding the train files
 names(train)[1]<-"subject"
-``
-### Read test ###
+```
 
+### Read test
+
+```
 setwd("../test/")
 
 subject_test<-read.table("subject_test.txt")
@@ -53,23 +56,26 @@ y_test<-read.table("y_test.txt")
 names(x_test)<-features[,2]         # naming the columns with the features names
 names(y_test)<-"activity"           # naming activity the columns
 names(subject_test)<-"subject"
+```
 
+- Binding the "test" files 
+```
 test<-cbind(subject_test,y_test,x_test)  #Binding the test files
+```
 
-### Merging by columns train and test ###
+### Merging by columns train and test
 
+```
 data<-rbind(test,train)
+```
 
+## Extracts only the measurements on the mean and standard deviation for each measurement 
 
-#########################################################################################
-#########################################################################################
-# Extracts only the measurements on the mean and standard deviation for each measurement 
-
-
+```
 data2<-cbind(data[,1],data[,2],data[,grepl("mean",names(data))|grepl("std",names(data))])   #extracting the columns that has the column name "mean" or "std" and merginid with subject and activity
 names(data2)[1]<-"subject"
 names(data2)[2]<-"activity"
-
+```
 
 #########################################################################################
 #########################################################################################
