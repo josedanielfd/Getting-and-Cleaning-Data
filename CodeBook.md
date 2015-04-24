@@ -40,7 +40,7 @@ After that i added a "." to the names i consider variables in order to gather th
 
 7. To obtain the mean of each variable for each activity for each subject the **'dplyr'** package was loaded and then grouped by activity and subject. Then funs(mean) is used to calculate the average asked.
 
-8. To make tidy data, i gather all the variables except for subject and activity in one column named "class", afterwards, i separated this column by ".", so i obtained 4 columns. Then i spread the "var" column into serveral columns because they doesnt have same "parameters" (ones are means, other std, others jerkmeans, etc). (I do not create a variable called axis because many variables do not have axis labels).
+8. To make tidy data, using **tidyr** i gather all the variables except for subject and activity in one column named "class", afterwards, i separated this column by ".", so i obtained 4 columns. Then i spread the "var" column into serveral columns because they doesnt have same "parameters" (ones are means, other std, others jerkmeans, etc). (I do not create a variable called axis because many variables do not have axis labels).
 
 9. Finally i wrote the file with write.table() 
 
