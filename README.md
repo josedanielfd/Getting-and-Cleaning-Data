@@ -1,11 +1,6 @@
 # Getting-and-Cleaning-Data
 Course Project
 
-#  Data
-
-1. The Data was obtained from the link: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip and its experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, it has been captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data.
-
-
 # Script
 
 - Setting WD
@@ -141,7 +136,7 @@ library(dplyr)
 tidy0<-group_by(data2,activityname,subject)  #Grouped by activity name and subject
 tidy1<-summarise_each(tidy0,funs(mean))    #Calculated the mean of each variable by activity and subject
 ```
-- Made shorter and tidyier the database. *For this i considered some variable names can be one variable, for example domain signals, it could take two values, etc. I do not consider each part of the variable name a variable itself because not all the variable names has the same number of characteristics (ex: axis). Some of them for example does not have axis.*
+- Made shorter and tidyier the database. *For this i considered some variable names can be variables, for example domain signals: it could take two values, etc. I do not consider each part of the variable name a variable itself because not all the variable names has the same number of characteristics. For example: Some of them does not have axis (x,y,z) and i consider it will be messier naming a variable "axis" and having lots of "NAs". And the means and std clearly are variables, so thats the reason i spread them.*
 
 ```
 library(tidyr)
