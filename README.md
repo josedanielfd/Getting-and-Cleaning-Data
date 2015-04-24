@@ -1,7 +1,7 @@
 # Getting-and-Cleaning-Data
 Course Project
 
-# Data
+#  Data
 
 1. The Data was obtained from the link: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip and its experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, it has been captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data.
 
@@ -16,7 +16,7 @@ setwd("/Users/JD/Documents/Data Science Johns Hopkins/Getting and Cleaning Data/
 
 ```
 
-## Merges the training and the test sets to create one data set.
+## 1. Merges the training and the test sets to create one data set.
 
 - Reading features
 
@@ -69,7 +69,7 @@ test<-cbind(subject_test,y_test,x_test)  #Binding the test files
 data<-rbind(test,train)
 ```
 
-## Extracts only the measurements on the mean and standard deviation for each measurement 
+## 2. Extracts only the measurements on the mean and standard deviation for each measurement 
 
 ```
 data2<-cbind(data[,1],data[,2],data[,grepl("mean",names(data))|grepl("std",names(data))])   #extracting the columns that has the column name "mean" or "std" and merginid with subject and activity
@@ -77,9 +77,7 @@ names(data2)[1]<-"subject"
 names(data2)[2]<-"activity"
 ```
 
-#########################################################################################
-#########################################################################################
-############# Uses descriptive activity names to name the activities in the data set ####
+## 3. Uses descriptive activity names to name the activities in the data set ####
 
 
 setwd("../")
@@ -96,9 +94,7 @@ data2$activityname<-tolower(data2$activityname)  #made lower case the activity n
 data2$activityname<-as.factor(data2$activityname)    #made factor case the activity names
 
 
-#########################################################################################
-#########################################################################################
-############# Appropriately labels the data set with descriptive variable names #########
+### 4. Appropriately labels the data set with descriptive variable names #########
 
 #In this part i agregate complete and descriptive names to the variables, ex: Acc for accelerometer, etc
 
@@ -130,10 +126,7 @@ names(data2)<-gsub("accelerometer","accelerometer.",names(data2))
 names(data2)<-gsub("gyroscope","gyroscope.",names(data2))
 
 
-#########################################################################################
-#########################################################################################
-##### From the data set in step 4, creates a second, independent tidy data set with the 
-##### average of each variable for each activity and each subject.
+## 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 
 library(dplyr)
