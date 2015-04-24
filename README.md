@@ -79,7 +79,7 @@ names(data2)[2]<-"activity"
 
 ## 3. Uses descriptive activity names to name the activities in the data set ####
 
-
+```
 setwd("../")
 activitylabels<-read.table("activity_labels.txt")
 
@@ -92,12 +92,13 @@ for ( i in seq_along(data[,1])){     ### match the activity label with its name 
 data2$activityname<-tolower(data2$activityname)  #made lower case the activity names
 
 data2$activityname<-as.factor(data2$activityname)    #made factor case the activity names
-
+```
 
 ### 4. Appropriately labels the data set with descriptive variable names #########
 
-#In this part i agregate complete and descriptive names to the variables, ex: Acc for accelerometer, etc
+*In this part i agregate complete and descriptive names to the variables, ex: Acc for accelerometer, etc*
 
+```
 names(data2)<-gsub("-","_",names(data2))   #Replacing the "-" for "_"
 names(data2)<-gsub("\\()","",names(data2))   #To eliminate parenthesis of the names
 names(data2)<-gsub("Acc","_accelerometer",names(data2))
@@ -115,7 +116,7 @@ names(data2)<-gsub("z$","axisz",names(data2))
 
 names(data2)<-gsub("_","",names(data2))   # If you want to eliminate "_" for ""
 
-#Agregated "." to separate later with (tidyr) 
+*Agregated "." to separate later with (tidyr)*
 
 names(data2)<-gsub("^t","time.",names(data2))
 names(data2)<-gsub("^f","frequency.",names(data2))
@@ -124,11 +125,11 @@ names(data2)<-gsub("body","body.",names(data2))
 names(data2)<-gsub("gravity","gravity.",names(data2))
 names(data2)<-gsub("accelerometer","accelerometer.",names(data2))
 names(data2)<-gsub("gyroscope","gyroscope.",names(data2))
-
+```
 
 ## 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
-
+```
 library(dplyr)
 
 tidy0<-group_by(data2,activityname,subject)  #Grouped by activity name and subject
@@ -136,11 +137,14 @@ tidy1<-summarise_each(tidy0,funs(mean))    #Calculated the mean of each variable
 
 library(tidyr)
 
-# Tidying the data:
+- Tidying the data:
 tidy2<-gather(tidy1,class,value,time.body.accelerometer.meanaxisx:frequency.body.gyroscope.jerkmagnitudemeanfrequency)
 tidy3<-separate(tidy2, class, into = c("domainsignals","accelerationsignals","sensor","var"))
 tidy4<-spread(tidy3,var,value)
+```
 
-#Writing on a file txt
+*Writing on a file txt*
 
+```
 write.table(tidy4, file="tidydataset.txt",row.name=FALSE)
+```
