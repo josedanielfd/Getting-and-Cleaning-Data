@@ -101,7 +101,7 @@ data2$activityname<-as.factor(data2$activityname)    #made factor the activity n
 - Agregates complete and descriptive names to the variables, ex: replaces Acc for accelerometer, etc
 - Cleans for reapeated words (ex: bodybody)
 - Made lowercase
-- eliminates symbols, just keep letters
+- Eliminates symbols, just keep letters
 
 ```
 names(data2)<-gsub("-","_",names(data2))   #Replacing the "-" for "_"
@@ -120,7 +120,7 @@ names(data2)<-gsub("z$","axisz",names(data2))
 
 names(data2)<-gsub("_","",names(data2))   # If you want to eliminate "_" for ""
 ```
-- agregated dots to separate different variables with *tidyr*
+-Aagregated dots to separate different variables with *tidyr* in *5.*
 ```
 names(data2)<-gsub("^t","time.",names(data2))
 names(data2)<-gsub("^f","frequency.",names(data2))
