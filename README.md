@@ -16,16 +16,14 @@ setwd("/Users/JD/Documents/Data Science Johns Hopkins/Getting and Cleaning Data/
 
 ```
 
-#########################################################################################
-#########################################################################################
-############# Merges the training and the test sets to create one data set. #############
+### Merges the training and the test sets to create one data set.
 
 - Reading features
-´´´
+``
 features<-read.table("features.txt")
-´´´
-### Read train ###
-
+``
+### Read train
+``
 setwd("./train/")
 
 subject_train<-read.table("subject_train.txt")
@@ -34,10 +32,12 @@ y_train<-read.table("y_train.txt")
 
 names(x_train)<-features[,2]     # naming the columns with the features names
 names(y_train)<- "activity"     # naming activity the columns 
-
+``
+- binding the "train" files  
+``
 train<-cbind(subject_train,y_train,x_train)  #Binding the train files
 names(train)[1]<-"subject"
-
+``
 ### Read test ###
 
 setwd("../test/")
